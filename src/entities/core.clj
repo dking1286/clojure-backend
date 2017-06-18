@@ -4,10 +4,5 @@
 
 (declare user todo)
 
-(defentity user
-  (table :users)
-  (has-many todo))
-
-(defentity todo
-  (table :todos)
-  (belongs-to user))
+(load "user")
+(load "todo")

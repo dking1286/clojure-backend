@@ -1,5 +1,5 @@
 (ns db.core
   (:require [korma.db :refer :all]
-            [db.environments :as environments]))
+            [environ.core :refer [env]]))
 
-(defdb db (postgres environments/development))
+(defdb db (postgres (env :db-config)))
