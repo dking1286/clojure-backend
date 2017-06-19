@@ -1,4 +1,4 @@
-(ns migrations.001-create-users-table
+(ns migrations.002-create-todos-table
   (:require [clojure.java.jdbc :as jdbc]
             [db.config :refer [db-config]]
             [lib.migration-utils :refer [create-table-with-timestamp-ddl]]))
@@ -7,14 +7,14 @@
   (jdbc/execute!
     db-config
     [(create-table-with-timestamp-ddl
-       "users"
+       "todos"
        [:id "serial PRIMARY KEY"]
-       [:first_name "varchar(128) NOT NULL"]
-       [:last_name "varchar(128) NOT NULL"]
-       [:email "varchar(128) NOT NULL UNIQUE"]
-       [:password "varchar(128) NOT NULL"])]))
+       [:title "text NOT NULL"]
+       [:body "text NOT NULL"]
+       [:user_id "bigint REFERENCES users(id)"]
+       [:is_done "bool NOT NULL DEFAULT false"])]))
 
 (defn down []
   (jdbc/execute!
     db-config
-    ["DROP TABLE users;"]))
+    ["DROP TABLE todos;"]))
