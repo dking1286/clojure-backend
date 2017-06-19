@@ -1,5 +1,5 @@
 (ns db.core
   (:require [korma.db :refer :all]
-            [environ.core :refer [env]]))
+            [db.config :refer [db-config]]))
 
-(defdb db (postgres (env :db-config)))
+(defdb db db-config)

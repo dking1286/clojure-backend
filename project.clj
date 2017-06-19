@@ -23,11 +23,7 @@
 
   :profiles 
   {:uberjar {:aot :all}
-   :test {:ragtime {:database "jdbc:postgresql://localhost:5432/clojure_backend_test?user=dking&password=helloworld"}}}
-
-  :aliases {"migrate:make" ["exec" "scripts/migrate:make.clj"]
-            "migrate:latest" ["run" "-m" "db.migrations/migrate"]
-            "migrate:rollback" ["run" "-m" "db.migrations/rollback"]})
+   :test {:ragtime {:database "jdbc:postgresql://localhost:5432/clojure_backend_test?user=dking&password=helloworld"}}})
 
 ;;; Where do I put db credential info so that it is accessible everywhere?
 ;;; Answer: Use the "environ" package
